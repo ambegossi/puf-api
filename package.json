@@ -1,0 +1,8 @@
+{
+  "name": "puf-api",
+  "version": "0.0.0",
+  "main": "index.js",
+  "author": "Anderson Begossi <andersonbegossi@gmail.com>",
+  "license": "MIT",
+  "private": false
+}
