@@ -46,6 +46,7 @@
     "prettier": "^2.4.1"
   },
   "dependencies": {
+    "@koa/router": "^10.1.1",
     "koa": "^2.13.3"
   }
 }
