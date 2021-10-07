@@ -6,7 +6,7 @@
   "license": "MIT",
   "private": false,
   "scripts": {
-    "dev": "nodemon --exec babel-node src/index.js",
+    "dev": "nodemon --exec babel-node -- -r dotenv-safe/config src/index.js",
     "prebuild": "rm -Rf ./dist",
     "build": "babel src --extensions \".js\" --ignore \"*.spec.js,*.test.js\" --out-dir dist --copy-files",
     "fix": "run-s \"fix:* {@}\" --",
@@ -48,6 +48,7 @@
   "dependencies": {
     "@koa/router": "^10.1.1",
     "dotenv": "^10.0.0",
+    "dotenv-safe": "^8.2.0",
     "koa": "^2.13.3"
   }
 }
