@@ -1,10 +1,12 @@
 import jwt from 'jsonwebtoken'
+import bcrypt from 'bcrypt'
 
 import { prisma } from '~/data'
 
 export const login = async ctx => {
   try {
     const { email, password } = ctx.request.body
+
     const [user] = await prisma.user.findMany({
       where: {
         email,
@@ -38,9 +40,21 @@ export const list = async ctx => {
 
 export const create = async ctx => {
   try {
+    const { name, email, password } = ctx.request.body
+
+    const saltRounds = 10
+
+    const hashedPassword = await bcrypt.hash(password, saltRounds)
+
     const user = await prisma.user.create({
-      data: ctx.request.body,
+      data: {
+        name,
+        email,
+        password: hashedPassword,
+      },
     })
+
+    delete user.password
 
     ctx.body = user
   } catch (error) {
